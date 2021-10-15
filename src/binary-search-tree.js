@@ -7,8 +7,8 @@ const { NotImplementedError } = require('../extensions/index.js');
 * using Node from extensions
 */
 class Node{
-  constructor(value){
-      this.value=value
+  constructor(data){
+      this.data=data
       this.left=null
       this.right=null
   }
@@ -23,28 +23,35 @@ module.exports = class BinarySearchTree {
   root() {
     // throw new NotImplementedError('Not implemented');
     // remove line with error and write your code here
+    // if(!this.base){
+    //   return this.base
+    // } else{
+    //   this.base.data
+    // }
+
     return this.base
+
     // return 'lol'
   }
 
-  add(value) {
+  add(data) {
     // throw new NotImplementedError('Not implemented');
     // remove line with error and write your code here
-    this.base=addIn(this.base,value)
+    this.base=addIn(this.base,data)
 
-    function addIn(node,value){
+    function addIn(node,data){
       if(!node){
-        return new Node(value)
+        return new Node(data)
       }
 
-      if(node.value===value){
+      if(node.data===data){
         return node
       }
 
-      if(value<node.value){
-        node.left=addIn(node.left,value)
+      if(data<node.data){
+        node.left=addIn(node.left,data)
       } else{
-        node.right=addIn(node.right,value)
+        node.right=addIn(node.right,data)
       }
 
       return node
@@ -52,55 +59,55 @@ module.exports = class BinarySearchTree {
     }
   }
 
-  has(value) {
+  has(data) {
     // throw new NotImplementedError('Not implemented');
     // remove line with error and write your code here
-    return searchIn(this.base,value)
+    return searchIn(this.base,data)
 
-    function searchIn(node,value){
+    function searchIn(node,data){
       if(!node){
         return false
       }
-      if(node.value===value){
+      if(node.data===data){
         return true
       }
 
-      return value<node.value?searchIn(node.left,value):searchIn(node.right,value)
+      return data<node.data?searchIn(node.left,data):searchIn(node.right,data)
     }
   }
 
-  find(value) {
+  find(data) {
     // throw new NotImplementedError('Not implemented');
     // remove line with error and write your code here
-    return findIn(this.base,value)
+    return findIn(this.base,data)
 
-    function findIn(node,value){
+    function findIn(node,data){
       if(!node){
         return null
       }
-      if(node.value===value){
-        return node.value
+      if(node.data===data){
+        return node.data
       }
 
-      return value<node.value?searchIn(node.left,value):searchIn(node.right,value)
+      return data<node.data?searchIn(node.left,data):searchIn(node.right,data)
     }
   }
 
-  remove(value) {
+  remove(data) {
     // throw new NotImplementedError('Not implemented');
     // remove line with error and write your code here
-    this.base=removeNode(this.base,value)
+    this.base=removeNode(this.base,data)
 
-    function removeNode(node,value){
+    function removeNode(node,data){
       if(!node){
         return null
       }
 
-      if(value<node.value){
-        node.left=removeNode(node.left,value)
+      if(data<node.data){
+        node.left=removeNode(node.left,data)
         return node
-      } else if(value>node.value){
-        node.right=removeNode(node.right,value)
+      } else if(data>node.data){
+        node.right=removeNode(node.right,data)
         return node
       } else{
 
@@ -123,8 +130,8 @@ module.exports = class BinarySearchTree {
           minRight=minRight.left
         }
 
-        node.value=minRight.value
-        node.right=removeNode(node.right,minRight.value)
+        node.data=minRight.data
+        node.right=removeNode(node.right,minRight.data)
 
         return node
 
@@ -137,13 +144,35 @@ module.exports = class BinarySearchTree {
   }
 
   min() {
-    throw new NotImplementedError('Not implemented');
+    // throw new NotImplementedError('Not implemented');
     // remove line with error and write your code here
+    if(!this.base){
+      return
+    }
+
+    let mindata=this.base
+
+    while(node.left){
+      mindata=node.left
+    }
+
+    return mindata
   }
 
   max() {
-    throw new NotImplementedError('Not implemented');
+    // throw new NotImplementedError('Not implemented');
     // remove line with error and write your code here
+    if(!this.base){
+      return
+    }
+
+    let maxdata=this.base
+
+    while(node.right){
+      maxdata=node.right
+    }
+
+    return maxdata
   }
 
 }
