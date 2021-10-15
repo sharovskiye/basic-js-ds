@@ -23,7 +23,7 @@ module.exports = class BinarySearchTree {
   root() {
     // throw new NotImplementedError('Not implemented');
     // remove line with error and write your code here
-    return this.base.value
+    return this.base
     // return 'lol'
   }
 
@@ -69,9 +69,21 @@ module.exports = class BinarySearchTree {
     }
   }
 
-  find(/* data */) {
-    throw new NotImplementedError('Not implemented');
+  find(value) {
+    // throw new NotImplementedError('Not implemented');
     // remove line with error and write your code here
+    return findIn(this.base,value)
+
+    function findIn(node,value){
+      if(!node){
+        return null
+      }
+      if(node.value===value){
+        return node.value
+      }
+
+      return value<node.value?searchIn(node.left,value):searchIn(node.right,value)
+    }
   }
 
   remove(/* data */) {
