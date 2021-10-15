@@ -62,7 +62,7 @@ module.exports = class BinarySearchTree {
   has(data) {
     // throw new NotImplementedError('Not implemented');
     // remove line with error and write your code here
-    return searchIn(this.base,data)
+    
 
     function searchIn(node,data){
       if(!node){
@@ -74,6 +74,8 @@ module.exports = class BinarySearchTree {
 
       return data<node.data?searchIn(node.left,data):searchIn(node.right,data)
     }
+
+    return searchIn(this.base,data)
   }
 
   find(data) {
@@ -86,10 +88,10 @@ module.exports = class BinarySearchTree {
         return null
       }
       if(node.data===data){
-        return node.data
+        return node
       }
 
-      return data<node.data?searchIn(node.left,data):searchIn(node.right,data)
+      return data<node.data?findIn(node.left,data):findIn(node.right,data)
     }
   }
 
@@ -147,32 +149,32 @@ module.exports = class BinarySearchTree {
     // throw new NotImplementedError('Not implemented');
     // remove line with error and write your code here
     if(!this.base){
-      return
+      return null
     }
 
-    let mindata=this.base
+    let node=this.base
 
     while(node.left){
-      mindata=node.left
+      node=node.left
     }
 
-    return mindata
+    return node
   }
 
   max() {
     // throw new NotImplementedError('Not implemented');
     // remove line with error and write your code here
     if(!this.base){
-      return
+      return null
     }
 
-    let maxdata=this.base
+    let node=this.base
 
     while(node.right){
-      maxdata=node.right
+      node=node.right
     }
 
-    return maxdata
+    return node
   }
 
 }
@@ -190,15 +192,19 @@ module.exports = class BinarySearchTree {
 
 // tree.add(5);
 
-// console.log(tree.root());
- // => 1;
+// // console.log(tree.root());// => 1;
 
-// tree.min() //=> 1
+// // console.log(tree.min());
+// // tree.min() //=> 1
+// // console.log(tree.max());
 
-// tree.max()// => 5
+// // tree.max()// => 5
 
-// tree.remove(5);
+// // tree.remove(5);
+// // console.log(tree.has(5));
+// // console.log(tree.find(5));
 
-// tree.has(5)// => false
+// // tree.has(5)// => false
+// // console.log(tree.max());
 
-// tree.max()// => 4
+// // tree.max()// => 4
