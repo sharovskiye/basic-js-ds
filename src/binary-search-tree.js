@@ -158,7 +158,7 @@ module.exports = class BinarySearchTree {
       node=node.left
     }
 
-    return node
+    return node.data
   }
 
   max() {
@@ -174,7 +174,7 @@ module.exports = class BinarySearchTree {
       node=node.right
     }
 
-    return node
+    return node.data
   }
 
 }
